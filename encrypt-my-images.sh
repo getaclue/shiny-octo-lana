@@ -2,15 +2,15 @@
 
 echo 'Hello,'
 echo '(1) We will be using openssl to encrypt your files.'
-echo '(2) We will be encrypting individual files in a directory.'
+echo '(2) We will be encrypting all of the files in the CURRENT directory.'
 echo '(3) Encrypted files will be stored in the subdirectory (./enc/)'
-echo '(4) Using aes-256-cbc'
+echo '(4) Suggestion: use aes-256-cbc cipher.'
 
 # echo 'Please enter the directory to encrypt: '
 # read directory
 
-echo 'Please enter the cypher to use: '
-read cypher
+echo 'Please enter the cipher to use: '
+read cipher
 
 echo 'Making enc directory'
 mkdir enc
@@ -21,7 +21,7 @@ read password
 echo 'Beginning encryption...'
 for file in *.JPG
 	do 
-		openssl enc $cyper -a -salt -in "$file" -out "./enc/$file" -pass pass:$password
+		openssl enc $cipher -a -salt -in "$file" -out "./enc/$file" -pass pass:$password
 done
 
 echo 'Finished.'
