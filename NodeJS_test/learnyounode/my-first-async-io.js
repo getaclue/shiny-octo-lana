@@ -1,8 +1,23 @@
 var path = process.argv[2]
 var fs = require('fs')
+var outputArray = undefined
 
-fs.readFile(path, 'utf8', printText)
+// Original way:
+// ============================================================================
+// fs.readFile(path, 'utf8', function callback(err, data){
+// 	outputArray = data.split('\n')
+// 	printText(outputArray)
+// })
 
-function printText(){
-	console.log('All good captain!')
+// Second way:
+// ============================================================================
+fs.readFile(path, function callback(err, data){
+	var temp = data.toString()
+	outputArray = temp.split('\n')
+	printText(outputArray)
+})
+
+function printText(message){
+	// console.log('All good captain!')
+	console.log(outputArray.length - 1)
 }
