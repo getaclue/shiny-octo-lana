@@ -10,6 +10,7 @@ mymodule(process.argv[2], process.argv[3], function(err, list){
 	}
 })
 
+// https://github.com/nodeschool/discussions/issues/64
 // solution.js:
 
 //     var filterFn = require('./solution_filter.js')
