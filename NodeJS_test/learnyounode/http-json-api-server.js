@@ -26,24 +26,30 @@ var server	= http.createServer(function callback(request, response){
 	// console.log(requestCall.query.iso)
 	// console.log(requestTime)
 
-	response.writeHead(200, {'Content-Type': 'application/json'})
-
 	if (requestCall['pathname'] == '/api/parsetime'){
 		// do regular JSON
 		// response.end((new Date(requestTime)).toJSON())
 		// response.end(requestTime)
+		response.writeHead(200, {'Content-Type': 'application/json'})
 		response.end(JSON.stringify({
 									'hour': 	Number(temp4[0]), 
 									'minute': 	Number(temp4[1]),
 									'second': 	Number(temp4[2])
 								}))
+	} else {
+		response.writeHead(404)
+		response.end()
 	}
 
 	if (requestCall['pathname'] == '/api/unixtime'){
 		// do UNIX format
+		response.writeHead(200, {'Content-Type': 'application/json'})
 		response.end(JSON.stringify({
 									'unixtime': unixDate
 		}))
+	} else {
+		response.writeHead(404)
+		response.end()
 	}
 })
 
